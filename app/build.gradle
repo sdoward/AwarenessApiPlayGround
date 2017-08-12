@@ -12,7 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        manifestPlaceholders = [awarenessKey:System.getenv('AWARENESS_KEY')]
+        manifestPlaceholders = [awarenessKey: System.getenv('AWARENESS_KEY')]
     }
     buildTypes {
         release {
@@ -27,6 +27,8 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.+'
     compile 'com.google.android.gms:play-services-awareness:11.0.4'
+    compile 'com.google.firebase:firebase-core:11.0.4'
+    compile 'com.google.firebase:firebase-database:11.0.4'
     compile 'io.reactivex.rxjava2:rxkotlin:2.1.0'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -34,3 +36,5 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'com.google.gms.google-services' // this needs to be at the bottom, I presume somebody screwed something up along the way
