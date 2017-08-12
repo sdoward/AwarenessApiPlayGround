@@ -18,7 +18,14 @@ class MainActivity : AppCompatActivity() {
                 .addApi(Awareness.API)
                 .build()
         client.connect()
-
+        activitiesButton.setOnClickListener {
+            Awareness.SnapshotApi.getDetectedActivity(client).setResultCallback {
+                val activityList = it.activityRecognitionResult
+                        .probableActivities
+                        .map { it.map() }
+                activitiesTextView.text = activityList.toString()
+            }
+        }
     }
 
 }
