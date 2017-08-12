@@ -1,6 +1,7 @@
 package com.sdoward.awareness.android
 
 import com.google.android.gms.location.DetectedActivity
+import com.google.android.gms.location.places.PlaceLikelihood
 
 fun DetectedActivity.map(): Activity {
     val typeString: String
@@ -20,6 +21,10 @@ fun DetectedActivity.map(): Activity {
     return Activity(typeString, confidence)
 }
 
-fun android.location.Location.map() : Location {
+fun android.location.Location.map(): Location {
     return Location(latitude, longitude, accuracy)
+}
+
+fun PlaceLikelihood.map(): Place {
+    return Place(likelihood, place.name.toString(), place.latLng.latitude, place.latLng.longitude)
 }

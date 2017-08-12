@@ -8,7 +8,6 @@ import com.google.android.gms.awareness.Awareness
 import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.main_activity.*
 
-
 class MainActivity : AppCompatActivity() {
 
 
@@ -25,10 +24,10 @@ class MainActivity : AppCompatActivity() {
         client.connect()
         activitiesButton.setOnClickListener {
             Awareness.SnapshotApi.getDetectedActivity(client).setResultCallback {
-                val activityList = it.activityRecognitionResult
+                infoTextView.text = it.activityRecognitionResult
                         .probableActivities
                         .map { it.map() }
-                infoTextView.text = activityList.toString()
+                        .toString()
             }
         }
         locationButton.setOnClickListener {
@@ -36,6 +35,20 @@ class MainActivity : AppCompatActivity() {
                 infoTextView.text = it.location.map().toString()
             }
         }
+        placesButton.setOnClickListener {
+            Awareness.SnapshotApi.getPlaces(client).setResultCallback {
+                if (it.placeLikelihoods == null) {
+                    infoTextView.text = "No places detected"
+                } else {
+                    infoTextView.text = it.placeLikelihoods
+                            .map { it.map() }
+                            .toString()
+
+                }
+
+            }
+        }
+
     }
 
 }
