@@ -5,18 +5,16 @@
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
         <activity
-                android:name=".MainActivity"
-                android:label="@string/app_name"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:name=".IdentityActivity"
+                android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -27,11 +25,12 @@
         <meta-data
                 android:name="com.google.android.awareness.API_KEY"
                 android:value="${awarenessKey}"/>
-
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="${awarenessKey}"/>
 
+        <activity android:name=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

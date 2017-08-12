@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="32dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context="com.sdoward.awareness.android.IdentityActivity">
+
+    <EditText
+            android:id="@+id/identityEditText"
+            android:hint="Tell us who you are so we can understand your data"
+            android:gravity="center"
+            android:layout_marginBottom="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/goButton"
+            android:text="Go"
+            android:paddingRight="32dp"
+            android:paddingLeft="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>
