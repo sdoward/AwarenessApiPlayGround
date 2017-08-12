@@ -37,8 +37,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+        <Button
+                android:id="@+id/locationButton"
+                android:text="Get Location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
         <TextView
-                android:id="@+id/activitiesTextView"
+                android:id="@+id/infoTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

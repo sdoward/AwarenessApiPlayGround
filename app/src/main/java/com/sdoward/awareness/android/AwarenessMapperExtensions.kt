@@ -19,3 +19,7 @@ fun DetectedActivity.map(): Activity {
     }
     return Activity(typeString, confidence)
 }
+
+fun android.location.Location.map() : Location {
+    return Location(latitude, longitude, accuracy)
+}
