@@ -6,10 +6,12 @@ import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.awareness.Awareness
 import com.google.android.gms.common.api.GoogleApiClient
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
+    val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,30 +25,13 @@ class MainActivity : AppCompatActivity() {
                 .build()
         client.connect()
         activitiesButton.setOnClickListener {
-            Awareness.SnapshotApi.getDetectedActivity(client).setResultCallback {
-                infoTextView.text = it.activityRecognitionResult
-                        .probableActivities
-                        .map { it.map() }
-                        .toString()
-            }
+            Awareness.SnapshotApi.getActivityObservable(client).subscribe { activities -> infoTextView.text = activities.toString() }
         }
         locationButton.setOnClickListener {
-            Awareness.SnapshotApi.getLocation(client).setResultCallback {
-                infoTextView.text = it.location.map().toString()
-            }
+            Awareness.SnapshotApi.getLocationObservable(client).subscribe { location -> infoTextView.text = location.toString() }
         }
         placesButton.setOnClickListener {
-            Awareness.SnapshotApi.getPlaces(client).setResultCallback {
-                if (it.placeLikelihoods == null) {
-                    infoTextView.text = "No places detected"
-                } else {
-                    infoTextView.text = it.placeLikelihoods
-                            .map { it.map() }
-                            .toString()
-
-                }
-
-            }
+            Awareness.SnapshotApi.getPlacesObservable(client).subscribe { places -> infoTextView.text = places.toString() }
         }
 
     }
