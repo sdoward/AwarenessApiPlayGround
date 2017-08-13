@@ -1,6 +1,7 @@
 package com.sdoward.awareness.android
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.ActivityCompat
@@ -67,6 +68,8 @@ class MainActivity : AppCompatActivity() {
                     .subscribe { awarenessModel -> infoTextView.text = awarenessModel.toString() }
                     .addTo(disposable)
         }
+
+        geoFenceButton.setOnClickListener { startActivity(Intent(this, GeoFenceActivity::class.java)) }
 
     }
 

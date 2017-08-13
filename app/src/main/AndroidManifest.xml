@@ -22,6 +22,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainActivity"/>
+
+        <activity android:name="com.sdoward.awareness.android.GeoFenceActivity"
+                  android:label="@string/title_activity_geo_fence">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                       android:value="com.sdoward.awareness.android.MainActivity"/>
+
+        </activity>
+
         <meta-data
                 android:name="com.google.android.awareness.API_KEY"
                 android:value="${awarenessKey}"/>
@@ -29,8 +38,6 @@
                 android:name="com.google.android.geo.API_KEY"
                 android:value="${awarenessKey}"/>
 
-        <activity android:name=".MainActivity">
-        </activity>
     </application>
 
 </manifest>
