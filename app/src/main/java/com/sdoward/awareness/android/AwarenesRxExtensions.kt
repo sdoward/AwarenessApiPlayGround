@@ -2,13 +2,15 @@ package com.sdoward.awareness.android
 
 import com.google.android.gms.awareness.SnapshotApi
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.location.DetectedActivity
 import com.google.android.gms.location.places.PlaceLikelihood
 import io.reactivex.Single
 
 fun SnapshotApi.getActivityObservable(client: GoogleApiClient): Single<List<Activity>> {
     return Single.create { emitter ->
         getDetectedActivity(client).setResultCallback {
-            emitter.onSuccess(it.activityRecognitionResult.probableActivities.map { it.map() })
+            val activities = if (it.activityRecognitionResult.probableActivities == null) listOf<DetectedActivity>() else it.activityRecognitionResult.probableActivities
+            emitter.onSuccess(activities.map { it.map() })
         }
     }
 }
