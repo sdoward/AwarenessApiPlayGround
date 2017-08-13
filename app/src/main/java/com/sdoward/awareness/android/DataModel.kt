@@ -6,4 +6,4 @@ data class Location(val latitude: Double, val longitude: Double, val accuracy: F
 
 data class Place(val likelihood: Float, val name: String, val latitude: Double, val longitude: Double)
 
-data class AwarenessModel(val activities: List<Activity>, val location: Location, val places: List<Place>)
+data class AwarenessModel(val activities: List<Activity>? = null, val location: Location? = null, val places: List<Place>? = null)
