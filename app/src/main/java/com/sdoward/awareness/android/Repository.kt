@@ -12,9 +12,9 @@ class Repository(private val userIdentifier: String) {
         databaseReference = database.getReference("awareness")
     }
 
-    fun setData(awarenessModel: AwarenessModel) {
+    fun setData(dateTime: String, awarenessModel: AwarenessModel) {
         databaseReference.child(userIdentifier)
-                .child(System.currentTimeMillis().toString())
+                .child(dateTime)
                 .setValue(awarenessModel)
     }
 
