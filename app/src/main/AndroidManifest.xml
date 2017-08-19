@@ -28,8 +28,14 @@
                   android:label="@string/title_activity_geo_fence">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                        android:value="com.sdoward.awareness.android.MainActivity"/>
-
         </activity>
+
+        <receiver android:name=".FenceReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.sdoward.awareness.android.FENCE"/>
+                <action android:name="android.intent.action.INPUT_METHOD_CHANGED" />
+            </intent-filter>
+        </receiver>
 
         <meta-data
                 android:name="com.google.android.awareness.API_KEY"
