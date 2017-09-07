@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.main_activity.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class MainActivity : AppCompatActivity() {
 
     val repository: Repository by lazy {
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                 .addApi(Awareness.API)
                 .build()
     }
-    val dateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm")
+    val dateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
     val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
